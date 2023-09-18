@@ -1,0 +1,51 @@
+{
+    "actionWork": {
+        "health": 111,
+        "mana": 2,
+        "cFul": 3,
+        "fatigue": 4,
+        "cash": 100
+    },
+    "actionContemplateNature": {
+        "health": 100,
+        "mana": 0,
+        "cFul": 0,
+        "fatigue": 0,
+        "cash": 100
+    },
+    "actionWineAndSeries": {
+        "health": 100,
+        "mana": 0,
+        "cFul": 0,
+        "fatigue": 0,
+        "cash": 100
+    },
+    "actionGoBar": {
+        "health": 100,
+        "mana": 0,
+        "cFul": 0,
+        "fatigue": 0,
+        "cash": 100
+    },
+    "actionDrinkWithMarginals": {
+        "health": 100,
+        "mana": 0,
+        "cFul": 0,
+        "fatigue": 0,
+        "cash": 100
+    },
+    "actionSingInMetro": {
+        "health": 100,
+        "mana": 0,
+        "cFul": 0,
+        "fatigue": 0,
+        "cash": 100
+    },
+    "actionSleep": {
+        "health": 100,
+        "mana": 0,
+        "cFul": 0,
+        "fatigue": 0,
+        "cash": 100
+    }
+}
