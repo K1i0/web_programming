@@ -6,19 +6,57 @@ namespace AlcoGame
     {
         static void Main(string[] args)
         {
-            // Console.InputEncoding = System.Text.Encoding.GetEncoding("utf-16");
-            // Console.Write("Enter the region to view statistics: ");
-            // Guid myuuid = Guid.NewGuid();
-            // string myuuidAsString = myuuid.ToString();
-            Persona person = new Persona();
-            person.loadPersonaConfig();
-            PersonalParameters paraaams = person.getPersonaStats();
-            Console.WriteLine($"Health : {paraaams.health}");
-            Console.WriteLine($"Mana : {paraaams.mana}");
-            Console.WriteLine($"cFul : {paraaams.cFul}");
+            startAlcoGame();
+        }
 
-            GameConfig gameConfig = new GameConfig();
-            gameConfig.loadActionsConfig();
+        static Persona person = new Persona();
+        static Actions actions = new Actions();
+
+        static void startAlcoGame() {
+            person.loadPersonaConfig();
+            while (true)
+            {
+                person.printPersonaParameters();
+                Console.Write("Choose an action (enter 8 to exit):\n\t" + 
+                    "1.Work\n\t" + 
+                    "2.Contemplate Nature\n\t" +
+                    "3.Wine And Series\n\t" + 
+                    "4.Go Bar\n\t" +
+                    "5.Drink With Marginals\n\t" +
+                    "6.Sing In The Metro\n\t" +
+                    "7.Sleep\n");
+                int variantChoice = Convert.ToInt16(Console.ReadLine());
+                Console.Clear();
+                switch (variantChoice)
+                {
+                    case 1:
+                        actions.Work(ref person);
+                        break;
+                    case 2:
+                        actions.ContemplateNature(ref person);
+                        break;
+                    case 3:
+                        actions.WineAndSeries(ref person);
+                        break;
+                    case 4:
+                        actions.GoBar(ref person);
+                        break;
+                    case 5:
+                        actions.DrinkWithMarginals(ref person);
+                        break;
+                    case 6:
+                        actions.SingInMetro(ref person);
+                        break;
+                    case 7:
+                        actions.Sleep(ref person);
+                        break;
+                    case 8:
+                        return;
+                    default:
+                        Console.WriteLine("Иди в хуй!");
+                        break;
+                }
+            }
         }
     }
 }

@@ -1,51 +1,46 @@
 {
     "actionWork": {
-        "health": 111,
-        "mana": 2,
-        "cFul": 3,
-        "fatigue": 4,
+        "mana": -30,
+        "cFul": -5,
+        "fatigue": 70,
         "cash": 100
     },
     "actionContemplateNature": {
-        "health": 100,
-        "mana": 0,
-        "cFul": 0,
-        "fatigue": 0,
-        "cash": 100
+        "mana": -10,
+        "cFul": 1,
+        "fatigue": 10
     },
     "actionWineAndSeries": {
-        "health": 100,
-        "mana": 0,
-        "cFul": 0,
-        "fatigue": 0,
-        "cash": 100
+        "health": -5,
+        "mana": 30,
+        "cFul": -1,
+        "fatigue": 10,
+        "cash": -20
     },
     "actionGoBar": {
-        "health": 100,
-        "mana": 0,
-        "cFul": 0,
-        "fatigue": 0,
-        "cash": 100
+        "health": -10,
+        "mana": 60,
+        "cFul": 1,
+        "fatigue": 40,
+        "cash": -100
     },
     "actionDrinkWithMarginals": {
-        "health": 100,
-        "mana": 0,
-        "cFul": 0,
-        "fatigue": 0,
-        "cash": 100
+        "health": -80,
+        "mana": 90,
+        "cFul": 5,
+        "fatigue": 80,
+        "cash": -150
     },
     "actionSingInMetro": {
-        "health": 100,
-        "mana": 0,
-        "cFul": 0,
-        "fatigue": 0,
-        "cash": 100
+        "mana": 10,
+        "cFul": 1,
+        "fatigue": 20,
+        "cash": 10
     },
     "actionSleep": {
-        "health": 100,
-        "mana": 0,
-        "cFul": 0,
-        "fatigue": 0,
-        "cash": 100
+        "health": 90,
+        "mana": -50,
+        "cFul": -3,
+        "fatigue": -70
     }
 }
