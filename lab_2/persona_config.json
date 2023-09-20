@@ -1,7 +1,7 @@
 {
-    "health": 100,
-    "mana": 0,
-    "cFul": 0,
-    "fatigue": 0,
-    "cash": 100
+  "health": 100,
+  "mana": 40,
+  "cFul": 3,
+  "fatigue": 100,
+  "cash": 100
 }

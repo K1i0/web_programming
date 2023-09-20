@@ -32,6 +32,9 @@ namespace AlcoGame
                     Console.Write($"Error: {Message}");
                     Console.WriteLine("(parameter: Fatigue)");
                     break;
+                case -5:
+                    Console.Write($"Error: {Message}");
+                    break;
                 default:
                     Console.WriteLine("Unknown error!");
                     break;
@@ -44,50 +47,53 @@ namespace AlcoGame
     {
         // Здоровье
         public sbyte health {get; set;}
+        const sbyte healthMin = 0;
+        const sbyte healthMax = 100;
         // Мана 
         public sbyte mana {get; set;}
+        const sbyte manaMin = 0;
+        const sbyte manaMax = 100;
         // Жизнерадостность
         public sbyte cFul {get; set;}
+        const sbyte cFulMin = -10;
+        const sbyte cFulMax = 10;
         // Усталость
         public sbyte fatigue {get; set;}
+        const sbyte fatigueMin = 0;
+        const sbyte fatigueMax = 100;
         // Деньги
         public int cash {get; set;}
 
-
         public void updateHealth(sbyte value) {
-            if (health + value >= 0 && health + value <= 100) {
-                health += value;
-            } else {
-                throw new PersonParameterException("Cannot update parameter. Invariant exception", -1);
-            }
+            health = (health + value < healthMin) ? healthMin : (health + value > healthMax) ? healthMax : (sbyte)(health + value);
         }
 
         public void updateMana(sbyte value) {
-            if (mana + value >= 0 && mana + value <= 100) {
-                mana += value;
-            } else {
-                throw new PersonParameterException("Cannot update parameter. Invariant exception", -2);
-            }
+            mana = (mana + value < manaMin) ? manaMin : (mana + value > manaMax) ? manaMax : (sbyte)(mana + value);
         }
 
         public void updateCFul(sbyte value) {
-            if (cFul + value >= -10 && cFul + value <= 10) {
-                cFul += value;
-            } else {
-                throw new PersonParameterException("Cannot update parameter. Invariant exception", -3);
-            }
+            cFul = (cFul + value < cFulMin) ? cFulMin : (cFul + value > cFulMax) ? cFulMax : (sbyte)(cFul + value);
         }
 
         public void updateFatigue(sbyte value) {
-            if (fatigue + value >= 0 && fatigue + value <= 100) {
-                fatigue += value;
-            } else {
-                throw new PersonParameterException("Cannot update parameter. Invariant exception", -4);
-            }
+            fatigue = (fatigue + value < fatigueMin) ? fatigueMin : (fatigue + value > fatigueMax) ? fatigueMax : (sbyte)(fatigue + value);
         }
 
         public void updateCash(int value) {
             cash += value;
+        }
+
+        public void checkStats() {
+            if (health > healthMax || health < healthMin) {
+                throw new PersonParameterException("Incorrect health value when loading person configuration!", -5);
+            } else if (mana > manaMax || mana < manaMin) {
+                throw new PersonParameterException("Incorrect mana value when loading person configuration!", -5);
+            } else if (cFul > cFulMax || cFul < cFulMin) {
+                throw new PersonParameterException("Incorrect cFul value when loading person configuration!", -5);
+            } else if (fatigue > fatigueMax || fatigue < fatigueMin) {
+                throw new PersonParameterException("Incorrect fatigue value when loading person configuration!", -5);
+            }
         }
 
         public void printPersonalParameters() {
@@ -100,11 +106,24 @@ namespace AlcoGame
         PersonalParameters stats = new PersonalParameters();
 
         public void savePersonaConfig(string path="persona_config.json") {
-            File.WriteAllText(path, JsonSerializer.Serialize(stats));
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            File.WriteAllText(path, JsonSerializer.Serialize(stats, options));
         }
-        public void loadPersonaConfig(string path="persona_config.json") {
+        public int loadPersonaConfig(string path="persona_config.json") {
             string text = File.ReadAllText(path);
             stats = JsonSerializer.Deserialize<PersonalParameters>(text);
+
+            try
+            {
+                stats.checkStats();
+            }
+            catch (PersonParameterException ex)
+            {
+                ex.ShowMessage();
+                return -1;
+            }
+
+            return 0;
         }
         public PersonalParameters getPersonaStats() {
             return stats;
