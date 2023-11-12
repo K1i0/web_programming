@@ -1,0 +1,19 @@
+﻿@using mvc_project
+@using mvc_project.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@*  ViewImports позволяет импортировать во все представления определенный функционал
+    Например, пространство имен
+
+    Для каждой группы представлений в одной папке мы можем
+    определить свой файл _ViewImports.cshtml. Например, если
+    мы хотим отдельно подключать ряд пространств имен в
+    только в представления контроллера HomeController, тогда
+    нам надо добавить файл _ViewImports.cshtml в каталог Views/
+    Home.
+*@
+
+@* Подключаем пространство имен класса Person *@
+@using MvcApp.Models
+@using MvcApp.ViewModels
+@using MvcApp.Controllers

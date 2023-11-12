@@ -1,0 +1,12 @@
+<h3>@ViewData["Message"]</h3>
+
+@if (ViewBag.People != null) 
+{
+    <h2>Count: @ViewBag.People.Count</h2>
+    <ul>
+    @foreach(string person in ViewBag.People)
+    {
+        <li>@person</li>
+    }
+    </ul>
+}
